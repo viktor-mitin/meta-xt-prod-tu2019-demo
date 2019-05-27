@@ -21,7 +21,7 @@ XT_QUIRK_BB_ADD_LAYER += "meta-xt-prod-extra"
 
 # Override revision of AGL auxiliary layers
 # N.B. the revision to use must be aligned with Poky's version of AGL to be built with
-BRANCH = "rocko"
+BRANCH = "thud"
 
 # Dom0 is a generic ARMv8 machine w/o machine overrides,
 # but still needs to know which system we are building,
