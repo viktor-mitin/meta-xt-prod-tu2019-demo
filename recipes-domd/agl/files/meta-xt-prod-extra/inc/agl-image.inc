@@ -5,6 +5,13 @@ IMAGE_INSTALL_append = " \
     kmscube \
     aos-vis \
     logrotate \
+    pulseaudio \
+    alsa-utils \
+    packagegroup-xt-core-guest-addons \
+    packagegroup-xt-core-xen \
+    packagegroup-xt-core-pv \
+    packagegroup-xt-core-network \
+    displaymanager \
 "
 
 #Add Xen and additional packages to build
