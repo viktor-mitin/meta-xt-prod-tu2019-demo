@@ -31,12 +31,6 @@ BBMASK = "meta-renesas/meta-rcar-gen3/recipes-multimedia/gstreamer"
 # Add for gstreamer plugins ugly
 LICENSE_FLAGS_WHITELIST = "commercial"
 
-PREFERRED_VERSION_gstreamer1.0 = "1.12.2"
-PREFERRED_VERSION_gstreamer1.0-libav = "1.12.2"
-PREFERRED_VERSION_gstreamer1.0-plugins-base = "1.12.2"
-PREFERRED_VERSION_gstreamer1.0-plugins-bad = "1.12.2"
-PREFERRED_VERSION_gstreamer1.0-plugins-good = "1.12.2"
-PREFERRED_VERSION_gstreamer1.0-plugins-ugly = "1.12.2"
 PREFERRED_VERSION_gstreamer1.0-plugins-vspfilter = "1.0%"
 
 #MACHINE_FEATURES_append = " multimedia"
