@@ -1,14 +1,12 @@
 [Unit]
 Description=EPAM Display Manager
 Requires=dbus.service
-Before=HomeScreen.service
+After=dbus.service
 
 [Service]
-Environment="XDG_RUNTIME_DIR=/run/user/0"
-Type=dbus
-BusName=com.epam.DisplayManager
-ExecStartPre=/usr/bin/weston-info
-ExecStart=/usr/bin/display_manager -c /xt/cfg/dm.cfg
+Type=simple
+Environment="XDG_RUNTIME_DIR=/run/platform/display"
+ExecStart=/usr/bin/display_manager -c /xt/cfg/dm.cfg -v *:Debug
 Restart=on-failure
 RestartSec=4
 

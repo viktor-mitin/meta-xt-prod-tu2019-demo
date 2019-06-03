@@ -3,11 +3,11 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRCREV = "${AUTOREV}"
 
 SRC_URI_append = " \
-    git://github.com/xen-troops/DisplayManager.git;protocol=https;branch=master \
+    git://github.com/xen-troops/DisplayManager.git;protocol=https;branch=tu2019-demo \
     file://display_manager.conf \
 "
 
-RDEPENDS_${PN} += " dbus-cpp"
+DEPENDS = "libconfig wayland-ivi-extension dbus-cxx git-native xt-log"
 
 EXTRA_OECMAKE_append = " -DWITH_DOC=OFF -DCMAKE_BUILD_TYPE=Release"
 
