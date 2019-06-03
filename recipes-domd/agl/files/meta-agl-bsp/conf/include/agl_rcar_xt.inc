@@ -4,6 +4,12 @@ DISTRO_FEATURES_append = " pam"
 # For virtualization
 DISTRO_FEATURES_append = " virtualization"
 
+# For v4l2-renderer
+DISTRO_FEATURES_append = " v4l2-renderer"
+
+# For pulseaudio
+DISTRO_FEATURES_append = " pulseaudio"
+
 # Enable Gfx Pkgs
 MACHINE_FEATURES_append = " gsx"
 MULTI_PROVIDER_WHITELIST += "virtual/libgl virtual/egl virtual/libgles1 virtual/libgles2"
