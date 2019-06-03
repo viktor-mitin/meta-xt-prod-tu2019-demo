@@ -107,6 +107,11 @@ configure_versions_rcar() {
     if [ ! -z "${AOS_VIS_PLUGINS}" ];then
         base_update_conf_value ${local_conf} AOS_VIS_PLUGINS "${AOS_VIS_PLUGINS}"
     fi
+
+    base_add_conf_value ${local_conf} ASSUME_PROVIDED "sync-native"
+    base_add_conf_value ${local_conf} HOSTTOOLS "sync"
+    base_add_conf_value ${local_conf} ASSUME_PROVIDED "bison-native"
+    base_add_conf_value ${local_conf} HOSTTOOLS  "bison"
 }
 
 python do_configure_append_rcar() {
