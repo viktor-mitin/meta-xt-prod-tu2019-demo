@@ -20,6 +20,7 @@ SRC_URI = " \
     file://display-manager.service \
     file://dm-salvator-x-m3.cfg \
     file://dm-salvator-x-h3.cfg \
+    file://dm-ulcb.cfg \
     file://eth0.network \
     file://xenbr0.netdev \
     file://xenbr0.network \
@@ -105,6 +106,8 @@ DM_CONFIG_salvator-xs-h3-xt = "dm-salvator-x-h3.cfg"
 DM_CONFIG_salvator-xs-h3-4x2g-xt = "dm-salvator-x-h3.cfg"
 DM_CONFIG_salvator-xs-h3-2x2g-xt = "dm-salvator-x-h3.cfg"
 DM_CONFIG_salvator-x-h3-4x2g-xt = "dm-salvator-x-h3.cfg"
+DM_CONFIG_ulcb = "dm-ulcb.cfg"
+DM_CONFIG_kingfisher_r8a7795 = "dm-salvator-x-h3.cfg"
 
 do_install() {
     install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}
@@ -112,6 +115,15 @@ do_install() {
 
     install -d ${D}${systemd_system_unitdir}
     install -m 0644 ${WORKDIR}/*.service ${D}${systemd_system_unitdir}
+
+    # N.B. display-manager must be installed as a user service which
+    # is not supported by systemd.bbclass at the moment, so
+    # do all dirty work by hands
+    rm ${D}${systemd_system_unitdir}/display-manager.service
+    install -d ${D}${systemd_user_unitdir}
+    install -m 0644 ${WORKDIR}/display-manager.service ${D}${systemd_user_unitdir}
+    install -d ${D}${sysconfdir}/systemd/user/default.target.wants
+    ln -sf ${systemd_user_unitdir}/display-manager.service ${D}${sysconfdir}/systemd/user/default.target.wants
 
     install -d ${D}${sysconfdir}/tmpfiles.d
     install -m 0644 ${WORKDIR}/android-disks.conf ${D}${sysconfdir}/tmpfiles.d/android-disks.conf
@@ -143,6 +155,7 @@ do_install() {
 FILES_${PN} = " \
     ${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}/*.sh \
     ${base_prefix}${XT_DIR_ABS_ROOTFS_CFG}/*.cfg \
+    ${systemd_user_unitdir}/display-manager.service \
     ${systemd_user_unitdir}/sndbe.service \
     ${base_prefix}${sysconfdir}/systemd/user/default.target.wants \
 "
